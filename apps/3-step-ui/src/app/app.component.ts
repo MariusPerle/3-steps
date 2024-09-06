@@ -10,5 +10,5 @@ import { WelcomeComponent } from './welcome.component';
     styleUrl: './app.component.scss',
 })
 export class AppComponent {
-    title = 'example-ui';
+    title = '3-step-ui';
 }

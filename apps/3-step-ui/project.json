@@ -1,28 +1,28 @@
 {
-    "name": "example-ui",
+    "name": "3-step-ui",
     "$schema": "../../node_modules/nx/schemas/project-schema.json",
     "projectType": "application",
     "prefix": "app",
-    "sourceRoot": "apps/example-ui/src",
+    "sourceRoot": "apps/3-step-ui/src",
     "tags": [],
     "targets": {
         "build": {
             "executor": "@angular-devkit/build-angular:application",
             "outputs": ["{options.outputPath}"],
             "options": {
-                "outputPath": "dist/apps/example-ui",
-                "index": "apps/example-ui/src/index.html",
-                "browser": "apps/example-ui/src/main.ts",
+                "outputPath": "dist/apps/3-step-ui",
+                "index": "apps/3-step-ui/src/index.html",
+                "browser": "apps/3-step-ui/src/main.ts",
                 "polyfills": ["zone.js"],
-                "tsConfig": "apps/example-ui/tsconfig.app.json",
+                "tsConfig": "apps/3-step-ui/tsconfig.app.json",
                 "inlineStyleLanguage": "scss",
                 "assets": [
                     {
                         "glob": "**/*",
-                        "input": "apps/example-ui/public"
+                        "input": "apps/3-step-ui/public"
                     }
                 ],
-                "styles": ["apps/example-ui/src/styles.scss"],
+                "styles": ["apps/3-step-ui/src/styles.scss"],
                 "scripts": []
             },
             "configurations": {
@@ -52,14 +52,14 @@
         "serve": {
             "executor": "@angular-devkit/build-angular:dev-server",
             "options": {
-                "proxyConfig": "apps/example-ui/proxy.conf.json",
+                "proxyConfig": "apps/3-step-ui/proxy.conf.json",
             },
             "configurations": {
                 "production": {
-                    "buildTarget": "example-ui:build:production"
+                    "buildTarget": "3-step-ui:build:production"
                 },
                 "development": {
-                    "buildTarget": "example-ui:build:development"
+                    "buildTarget": "3-step-ui:build:development"
                 }
             },
             "defaultConfiguration": "development"
@@ -67,7 +67,7 @@
         "extract-i18n": {
             "executor": "@angular-devkit/build-angular:extract-i18n",
             "options": {
-                "buildTarget": "example-ui:build"
+                "buildTarget": "3-step-ui:build"
             }
         },
         "lint": {
@@ -77,15 +77,15 @@
             "executor": "@nx/jest:jest",
             "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
             "options": {
-                "jestConfig": "apps/example-ui/jest.config.ts"
+                "jestConfig": "apps/3-step-ui/jest.config.ts"
             }
         },
         "serve-static": {
             "executor": "@nx/web:file-server",
             "options": {
-                "buildTarget": "example-ui:build",
+                "buildTarget": "3-step-ui:build",
                 "port": 4200,
-                "staticFilePath": "dist/apps/example-ui/browser",
+                "staticFilePath": "dist/apps/3-step-ui/browser",
                 "spa": true
             }
         },
@@ -93,7 +93,7 @@
             "executor": "nx:run-commands",
             "options": {
                 "parallel": true,
-                "commands": ["nx serve example-app", "nx serve example-ui"]
+                "commands": ["nx serve 3-step-app", "nx serve 3-step-ui"]
             }
         }
     }

@@ -1,9 +1,9 @@
 {
-    "name": "@example/source",
+    "name": "@3-step/source",
     "version": "0.0.0",
     "license": "MIT",
     "scripts": {
-        "start": "nx stack example-ui",
+        "start": "nx stack 3-step-ui",
         "format": "prettier --write \"./**/*.{js,jsx,mjs,cjs,ts,tsx,json}\""
     },
     "private": true,

@@ -17,7 +17,7 @@ async function bootstrap() {
     app.enableCors();
 
     const config = new DocumentBuilder()
-        .setTitle('Example')
+        .setTitle('3 Step')
         .setDescription('Baseline for web projects')
         .setVersion(process.env.npm_package_version)
         .addBearerAuth()

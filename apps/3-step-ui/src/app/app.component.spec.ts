@@ -19,13 +19,13 @@ describe('AppComponent', () => {
         fixture.detectChanges();
         const compiled = fixture.nativeElement as HTMLElement;
         expect(compiled.querySelector('h1')?.textContent).toContain(
-            'Welcome example-ui'
+            'Welcome 3-step-ui'
         );
     });
 
     it(`should have as title 'example-ui'`, () => {
         const fixture = TestBed.createComponent(AppComponent);
         const app = fixture.componentInstance;
-        expect(app.title).toEqual('example-ui');
+        expect(app.title).toEqual('3-step-ui');
     });
 });

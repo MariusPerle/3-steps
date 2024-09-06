@@ -1,9 +1,9 @@
 /* eslint-disable */
 export default {
-    displayName: 'example-ui',
+    displayName: '3-step-ui',
     preset: '../../jest.preset.js',
     setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
-    coverageDirectory: '../../coverage/apps/example-ui',
+    coverageDirectory: '../../coverage/apps/3-step-ui',
     transform: {
         '^.+\\.(ts|mjs|js|html)$': [
             'jest-preset-angular',

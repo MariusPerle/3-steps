@@ -20,19 +20,19 @@ local installation of prettier.
 To run the dev server for your app, use:
 
 ```sh
-npx nx serve example-ui
+npx nx serve 3-step-ui
 ```
 
 To create a production bundle:
 
 ```sh
-npx nx build example-ui
+npx nx build 3-step-ui
 ```
 
 To see all available targets to run for a project, run:
 
 ```sh
-npx nx show project example-ui
+npx nx show project 3-step-ui
 ```
 
 These targets are

@@ -1,6 +1,6 @@
 /* eslint-disable */
 export default {
-    displayName: 'example-app',
+    displayName: '3-step-app',
     preset: '../../jest.preset.js',
     testEnvironment: 'node',
     transform: {
@@ -10,5 +10,5 @@ export default {
         ],
     },
     moduleFileExtensions: ['ts', 'js', 'html'],
-    coverageDirectory: '../../coverage/apps/example-app',
+    coverageDirectory: '../../coverage/apps/3-step-app',
 };
