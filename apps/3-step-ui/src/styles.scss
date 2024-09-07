@@ -6,3 +6,25 @@ body {
 .row {
   margin: 0;
 }
+
+.info-box {
+  font-size: 18px;
+  background: #FFF3E3;
+  padding: 5rem 3ch;
+
+  .header {
+    color: #B88E2F;
+    font-weight: bold;
+    font-size: 52px;
+  }
+
+  button {
+    background: #B88E2F;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    border: none;
+    padding: 2ch 5ch;
+    margin-top: 5ch;
+  }
+}

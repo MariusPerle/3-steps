@@ -2,7 +2,11 @@
   h2 {
     text-align: center;
   }
-  .item {
-    max-width: 300px;
+  .items {
+    margin-bottom: 3rem;
+    .item {
+      max-width: 300px;
+    }
   }
+
 }

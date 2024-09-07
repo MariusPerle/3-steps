@@ -6,7 +6,7 @@
     z-index: -1;
 
 
-    .text {
+    .info-box {
       position: absolute;
       bottom: 125px;
       right: 0;
@@ -30,6 +30,7 @@
 
       .step {
         text-align: center;
+
         img {
           cursor: pointer;
         }
