@@ -12,6 +12,8 @@ import { FoodExpiresSoon } from '@3-steps/interfaces';
 export class DiscountItemComponent {
     @Input({ required: true }) item!: FoodExpiresSoon;
 
+    now = new Date();
+
     get discountedPrice() {
         return (
             this.item.price *
