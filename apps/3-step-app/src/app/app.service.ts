@@ -12,7 +12,7 @@ export class AppService {
 
   private foodList: Food[];
 
-  private soonExpireList: Food[];
+  private soonExpireList: FoodExpiresSoon[] = [];
   private expiredList: Food[];
   private wasteList: Food[];
 
@@ -42,9 +42,12 @@ export class AppService {
 
     let today = new Date(2024,8,16);
 
-    this.soonExpireList = this.foodList.filter(
-      (food) => evaluateRule(food, today) === 'soon'
-    );
+    this.soonExpireList = this.foodList
+      .filter((food) => evaluateRule(food, today) === 'soon')
+      .map((food) => ({
+        ...food,
+        discountInPercent: 50 // or any logic to determine the discount
+      } as FoodExpiresSoon));
 
     this.expiredList = this.foodList.filter(
       (food) => evaluateRule(food, today) === 'expired'
