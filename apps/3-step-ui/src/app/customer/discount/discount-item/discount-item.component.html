@@ -1,6 +1,8 @@
-<p>discount-item works!</p>
-{{ item | json }}
-
-<div>
-  new Price {{discountedPrice}}
+<div class="item">
+  {{item.name}}
+  <div>
+    {{item.price}} reduced by {{item.discountInPercent}}% to {{discountedPrice}}
+  </div>
+  Expiring at {{item.expiresAt | date}}. (only {{item.available}} left)
 </div>
+

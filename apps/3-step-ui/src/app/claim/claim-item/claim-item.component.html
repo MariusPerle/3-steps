@@ -1,5 +1,5 @@
-<div [ngClass]="{selected: selected}">
-  {{ item | json }}
-  <div (click)="selectedItem.emit()">select</div>
+<div [ngClass]="{selected: selected}" class="item">
+  {{item.name}} ({{item.weight}})
+  <div (click)="selectedItem.emit()">save {{item.available}}</div>
 </div>
 
