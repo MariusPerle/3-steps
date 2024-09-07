@@ -1,17 +1,14 @@
-interface Article {
-  expiresAt: Date;
-  available: number;
-  name: string;
-}
+import { Food } from '@3-steps/interfaces';
 
+// Status of experitation
 type Status = string;
 
-interface Filter {
+export interface Filter {
   name: string;
-  filter(item: Article, now: Date): Status | null;
+  filter(item: Food, now: Date): Status | null;
 }
 
-const pipe = (...filters: Array<Filter>) => (item: Article, now: Date): Status | null => {
+export const pipe = (...filters: Array<Filter>) => (item: Food, now: Date): Status | null => {
   for( const filter of filters ) {
     const result = filter.filter(item, now);
 
