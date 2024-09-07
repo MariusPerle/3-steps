@@ -12,7 +12,18 @@ export class foodDatabase {
         this.db.exec("DROP TABLE food")
         
         // if table food does not exist, create it
-        this.db.exec("CREATE TABLE IF NOT EXISTS food (id INT PRIMARY KEY, name VARCHAR(255), expiresAt VARCHAR(120), price REAL, weight VARCHAR(120), packagingUnit VARCHAR(120), available INTEGER)");
+        this.db.exec(
+            `CREATE TABLE IF NOT EXISTS food (
+            id INT PRIMARY KEY,
+            name VARCHAR(255),
+            expiresAt VARCHAR(120),
+            price REAL,
+            weight VARCHAR(120),
+            packagingUnit VARCHAR(120),
+            available INTEGER,
+            discountInPercent INTEGER DEFAULT 0 NOT NULL,
+            claimed BOOL DEFAULT FALSE NOT NULL)`
+        );
 
     }
 
@@ -25,7 +36,7 @@ export class foodDatabase {
     }
 
     insertIntoDb(id: number, name: string, expiresAt: string, price: number, weight: string, packagingUnit: string, available: number) {
-        this.db.exec(`INSERT INTO food VALUES (${id}, '${name}', '${expiresAt}', ${price}, '${weight}', '${packagingUnit}', ${available})`);
+        this.db.exec(`INSERT INTO food(id,name,expiresAt,price,weight,packagingUnit,available) VALUES (${id}, '${name}', '${expiresAt}', ${price}, '${weight}', '${packagingUnit}', ${available})`);
     }
 
 }
