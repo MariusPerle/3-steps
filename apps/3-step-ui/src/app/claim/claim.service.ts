@@ -8,7 +8,7 @@ export class ClaimService {
     constructor(private readonly http: HttpClient) {}
 
     claimItems(itemIds: string[]) {
-        return this.http.post('api/claim', {
+        return this.http.post('api/Waste/claim', {
             userId: this.userId,
             itemIds,
         });
