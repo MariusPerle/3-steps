@@ -1,6 +1,7 @@
-import { Controller, Get } from '@nestjs/common';
+import { Body, Controller, Get, Post } from '@nestjs/common';
 
 import { AppService } from './app.service';
+import { ClaimItemDto } from './claim-item.dto';
 
 @Controller("Soon")
 export class SoonExpireController {
@@ -31,5 +32,11 @@ export class WasteController {
     @Get()
     getWasteData() {
         return this.appService.getData();
+    }
+
+    @Post("claim")
+    claimItem(@Body() dto: ClaimItemDto) {
+      this.appService.claimItem(dto)
+
     }
 }
