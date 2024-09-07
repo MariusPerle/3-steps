@@ -1,5 +1,5 @@
 <div class="item" [ngClass]="{selected: selected}">
-  <img class="item-image" src="items/example.png">
+  <img class="item-image" [src]="'items/'+item.id+'.png'">
   <div class="description">
     <div class="name">{{item.name}}</div>
     <div class="weight">{{item.weight}}</div>

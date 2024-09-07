@@ -1,29 +1,31 @@
 <div class="item">
-    <img class="item-image" src="items/example.png">
-    <div class="description">
-        <div class="name">{{item.name}}</div>
-        <div class="weight">{{item.weight}}</div>
-    </div>
-    <div class="hover">
+  <img class="item-image" [src]="'items/'+item.id+'.png'">
+  <div class="description">
+    <div class="name">{{ item.name }}</div>
+    <div class="weight">{{ item.weight }}</div>
+  </div>
+  <div class="hover">
 
-    </div>
-    <div class="discount-only">
-        -{{item.discountInPercent}}%
-    </div>
-    <div class="price-container">
-        <div class="prices">
-            <div class="discount-price">
-                -{{item.discountInPercent}}%
-            </div>
-            <div class="price">
-                <div class="old-price">{{item.price}}<div class="cross"></div></div>
-                <div class="new-price">{{discountedPrice}}</div>
-            </div>
+  </div>
+  <div class="discount-only">
+    -{{ item.discountInPercent }}%
+  </div>
+  <div class="price-container">
+    <div class="prices">
+      <div class="discount-price">
+        -{{ item.discountInPercent }}%
+      </div>
+      <div class="price">
+        <div class="old-price">{{ item.price }}
+          <div class="cross"></div>
         </div>
+        <div class="new-price">{{ discountedPrice }}</div>
+      </div>
     </div>
+  </div>
 
-    <div class="limit-time">
-        only available {{now | date: 'dd.MM'}} - {{item.expiresAt | date:'dd.MM'}}
-    </div>
+  <div class="limit-time">
+    only available {{ now | date: 'dd.MM' }} - {{ item.expiresAt | date:'dd.MM' }}
+  </div>
 </div>
 

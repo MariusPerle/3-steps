@@ -1,16 +1,15 @@
 import { Database } from 'sqlite3';
 
 export class foodDatabase {
-
     private db: Database;
 
     constructor() {
         // open db stored in file "inventory.db"
-        this.db = new Database('inventory.db')
+        this.db = new Database('inventory.db');
 
         // Drop table for testing only
-        this.db.exec("DROP TABLE food")
-        
+        this.db.exec('DROP TABLE IF EXISTS food');
+
         // if table food does not exist, create it
         this.db.exec(
             `CREATE TABLE IF NOT EXISTS food (
@@ -24,7 +23,6 @@ export class foodDatabase {
             discountInPercent INTEGER DEFAULT 0 NOT NULL,
             claimed BOOL DEFAULT FALSE NOT NULL)`
         );
-
     }
 
     getConnection() {
@@ -35,12 +33,17 @@ export class foodDatabase {
         this.db.exec(cmd);
     }
 
-    insertIntoDb(id: number, name: string, expiresAt: string, price: number, weight: string, packagingUnit: string, available: number) {
-        this.db.exec(`INSERT INTO food(id,name,expiresAt,price,weight,packagingUnit,available) VALUES (${id}, '${name}', '${expiresAt}', ${price}, '${weight}', '${packagingUnit}', ${available})`);
+    insertIntoDb(
+        id: number,
+        name: string,
+        expiresAt: string,
+        price: number,
+        weight: string,
+        packagingUnit: string,
+        available: number
+    ) {
+        this.db.exec(
+            `INSERT INTO food(id,name,expiresAt,price,weight,packagingUnit,available) VALUES (${id}, '${name}', '${expiresAt}', ${price}, '${weight}', '${packagingUnit}', ${available})`
+        );
     }
-
 }
-
-
-
-
