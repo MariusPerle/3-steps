@@ -17,12 +17,10 @@ export class Food {
 }
 
 export class FoodExpiresSoon extends Food {
-    discountInPercent: number;
+    discountInPercent: number = 50;
 
     constructor(id: string, name: string, expiresAt: string, price: number, weight: string, available: number, discountInPercent: number) {
         super(id, name, expiresAt, price, weight, available);
         this.discountInPercent = discountInPercent;
     }
-
-    
 }
