@@ -3,19 +3,18 @@ import { Body, Controller, Get, Post } from '@nestjs/common';
 import { AppService } from './app.service';
 import { ClaimItemDto } from './claim-item.dto';
 
-@Controller("Soon")
+@Controller('Soon')
 export class SoonExpireController {
     constructor(private readonly appService: AppService) {}
 
     @Get()
     getSoonExpireData() {
-
         // Return JSON here
         return this.appService.getData();
     }
 }
 
-@Controller("Now")
+@Controller('Now')
 export class ExpiredController {
     constructor(private readonly appService: AppService) {}
 
@@ -25,7 +24,7 @@ export class ExpiredController {
     }
 }
 
-@Controller("Waste")
+@Controller('Waste')
 export class WasteController {
     constructor(private readonly appService: AppService) {}
 
@@ -34,9 +33,8 @@ export class WasteController {
         return this.appService.getData();
     }
 
-    @Post("claim")
+    @Post('claim')
     claimItem(@Body() dto: ClaimItemDto) {
-      this.appService.claimItem(dto)
-
+        this.appService.claimItem(dto);
     }
 }
