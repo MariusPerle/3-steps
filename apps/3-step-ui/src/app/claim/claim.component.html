@@ -4,6 +4,13 @@
     <div class="col-3 item">
   <step-claim-item [item]="item" [selected]="selectedIds.includes(item.id)" (selectedItem)="select(item.id)"></step-claim-item>
     </div>
+  } @empty {
+    <div class="text-center">
+      Nothing available. Please check in later.
+    </div>
   }
 </div>
-<button (click)="claimItems()">Claim Items</button>
+@if (selectedIds.length) {
+  <button (click)="claimItems()">Claim Items</button>
+}
+
