@@ -1,7 +1,9 @@
 export class Food {
-    amount: number;
+    id: string;
     name: string;
-    expires: Date;
+    expiresAt: Date;
+    weight: string;
+    available: number;
 }
 
 export class FoodExpiresSoon extends Food {
