@@ -1,4 +1,4 @@
-<div class="item">
+<div class="item" [ngClass]="{selected: selected}">
   <img class="item-image" src="items/example.png">
   <div class="description">
     <div class="name">{{item.name}}</div>
@@ -7,16 +7,13 @@
   <div class="hover">
     <div>
       <div class="actions">
-        <button>Add to list</button>
+        <button (click)="selectedItem.emit()">Select item</button>
       </div>
-      <div class="actions">
-        <img src="items/interact.png">
-      </div>
-
     </div>
   </div>
   <div class="limit-time">
     only available {{now | date: 'dd.MM'}} - {{item.expiresAt | date:'dd.MM'}}
   </div>
+  <!---Todo insert here info that item got claimed--->
 </div>
 

@@ -1,0 +1,20 @@
+<div class="intro position-relative">
+  <img src="recipe/big-example.png">
+  <div class="info-box">
+    <div class="header">Create Your Own Culinary Masterpiece</div>
+    <div>Create recipes that ensure no ingredient ever ends up in the trash bin</div>
+    <button>Create now</button>
+  </div>
+</div>
+
+
+<h2 class="text-center">Suggested recipe</h2>
+
+<div class="row justify-content-center">
+  @for (recipe of recipes | async; track recipe) {
+    <div class="col-4 recepie">
+      <step-recipe [recipe]="recipe"></step-recipe>
+    </div>
+  }
+</div>
+
