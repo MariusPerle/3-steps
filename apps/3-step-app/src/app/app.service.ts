@@ -13,8 +13,8 @@ export class AppService {
   private foodList: Food[];
 
   private soonExpireList: FoodExpiresSoon[] = [];
-  private expiredList: Food[];
-  private wasteList: Food[];
+  private expiredList: FoodToClaim[];
+  private wasteList: FoodToClaim[];
 
   
   convertJsonObjToFood(json: any): Food {
@@ -80,10 +80,12 @@ export class AppService {
         return this.wasteList;
     }
 
-    claimItem(dto: ClaimItemDto) {
+    claimItem(dto: ClaimItemDto, itemToClaim: FoodToClaim) {
         console.log(dto);
 
-
+        // Find the item in the list and set claimed to true
+        (this.expiredList.find((item) => item.id === itemToClaim.id)).claimed = true;
+        
 
     }
 }
