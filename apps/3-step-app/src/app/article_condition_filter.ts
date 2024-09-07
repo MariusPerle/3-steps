@@ -56,4 +56,4 @@ const waste: Filter = {
   }
 }
 
-const evaluateRule = pipe(goodCondition, expiringSoon, expired, waste);
+export const evaluateRule = pipe(goodCondition, expiringSoon, expired, waste);
