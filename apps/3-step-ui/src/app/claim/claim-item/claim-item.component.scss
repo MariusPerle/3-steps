@@ -1,5 +1,9 @@
 @use "../../shared/item";
 
 :host {
+  .item.selected {
+    border: solid 2px black;
+  }
+
   @include item.item-render
 }
