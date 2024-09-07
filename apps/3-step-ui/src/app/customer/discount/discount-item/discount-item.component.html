@@ -4,7 +4,17 @@
         <div class="name">{{item.name}}</div>
         <div class="weight">{{item.weight}}</div>
     </div>
-    <div class="hover"></div>
+    <div class="hover">
+        <div>
+            <div class="actions">
+                <button>Add to list</button>
+            </div>
+            <div class="actions">
+                <img src="items/interact.png">
+            </div>
+
+        </div>
+    </div>
     <div class="discount-only">
         -{{item.discountInPercent}}%
     </div>
@@ -14,7 +24,7 @@
                 -{{item.discountInPercent}}%
             </div>
             <div class="price">
-                <div class="old-price">{{item.price}}</div>
+                <div class="old-price">{{item.price}}<div class="cross"></div></div>
                 <div class="new-price">{{discountedPrice}}</div>
             </div>
         </div>

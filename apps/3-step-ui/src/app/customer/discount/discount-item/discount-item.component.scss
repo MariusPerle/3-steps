@@ -1,6 +1,5 @@
 :host .item {
   position: relative;
-  border: solid;
   width: fit-content;
 
   .item-image {
@@ -21,6 +20,43 @@
       font-weight: bold;
       font-size: 20px;
     }
+  }
+
+  .hover {
+    visibility: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(58, 58, 58, 0.72);
+    width: 100%;
+    height: 100%;
+
+    .actions {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 1;
+
+      button {
+        cursor: pointer;
+      }
+
+      img {
+        cursor: pointer;
+        width: 252px;
+        height: 24px;
+        opacity: 1;
+      }
+    }
+
+
+  }
+
+  &:hover .hover {
+    visibility: visible;
   }
 
   .discount-only {
@@ -74,6 +110,16 @@
           font-size: 10px;
           right: 2px;
           top: -2px;
+          height: 13px;
+
+          .cross {
+            position: absolute;
+            top: 0;
+            right: 0;
+            height: 13px;
+            width: 4ch;
+            background: linear-gradient(to bottom right, transparent calc(50% - .25px), black 50%, black calc(50% + 1px), transparent calc(50% + 1.25px));
+          }
         }
 
         .new-price {
@@ -81,8 +127,17 @@
           font-size: 14px;
         }
       }
+
     }
   }
 
-
+  .limit-time {
+    position: absolute;
+    bottom: 1ch;
+    border-radius: 15px;
+    left: 1ch;
+    font-size: 8px;
+    padding: 1ch;
+    background: #D9D9D9;
+  }
 }
