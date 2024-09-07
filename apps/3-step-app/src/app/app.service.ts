@@ -1,21 +1,22 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, OnModuleInit } from '@nestjs/common';
 import * as fs from 'fs';
 import { ClaimItemDto } from './claim-item.dto';
 import { Food, FoodExpiresSoon, FoodToClaim } from '@3-steps/interfaces';
 import { evaluateRule } from './article_condition_filter';
+import { foodDatabase } from './sqlite_db';
 
 @Injectable()
 // API-Request to Schwarz-IT here
-export class AppService {
+export class AppService implements OnModuleInit{
 
   private data: object[];
 
   private foodList: Food[];
-
   private soonExpireList: FoodExpiresSoon[] = [];
   private expiredList: FoodToClaim[];
   private wasteList: FoodToClaim[];
 
+  private dbConnection : foodDatabase = new foodDatabase();
   
   convertJsonObjToFood(json: any): Food {
     return new Food(
@@ -62,7 +63,27 @@ export class AppService {
         ...food,
         claimed: false
     } as FoodToClaim));
+
   }
+    onModuleInit() {
+        for (const obj of this.data) {
+            this.dbConnection.insertIntoDb(
+                obj['id'],
+                obj['name'],
+                obj['expiresAt'],
+                obj['price'],
+                obj['weight'],
+                obj['packagingUnit'],
+                obj['available']
+            );
+        }
+
+        console.log('Data written to database');
+        this.dbConnection.getConnection().all(
+            'SELECT * FROM food ',
+            (_, res) => console.log(res)
+            );
+    }
 
     getData(): object {
         return this.data;
@@ -85,7 +106,6 @@ export class AppService {
 
         // Find the item in the list and set claimed to true
         (this.expiredList.find((item) => item.id === itemToClaim.id)).claimed = true;
-        
 
     }
 }
