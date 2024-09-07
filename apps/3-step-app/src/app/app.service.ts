@@ -12,9 +12,9 @@ export class AppService {
 
   private foodList: Food[];
 
-  soonExpireList: Food[];
-  expiredList: Food[];
-  wasteList: Food[];
+  private soonExpireList: Food[];
+  private expiredList: Food[];
+  private wasteList: Food[];
 
   
   convertJsonObjToFood(json: any): Food {
@@ -40,16 +40,18 @@ export class AppService {
 
     this.convertJsonArrayToFoodList(this.data);
 
+    let today = new Date(2024,8,16);
+
     this.soonExpireList = this.foodList.filter(
-      (food) => evaluateRule(food, new Date()) === 'soon'
+      (food) => evaluateRule(food, today) === 'soon'
     );
 
     this.expiredList = this.foodList.filter(
-      (food) => evaluateRule(food, new Date()) === 'expired'
+      (food) => evaluateRule(food, today) === 'expired'
     );
 
     this.wasteList = this.foodList.filter(
-      (food) => evaluateRule(food, new Date()) === 'waste'
+      (food) => evaluateRule(food, today) === 'waste'
     );
   }
 
@@ -57,7 +59,7 @@ export class AppService {
         return this.data;
     }
 
-    getSoonTooExpireList(): Food[] {
+    getSoonExpireList(): Food[] {
         return this.soonExpireList;
     }
 
