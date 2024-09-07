@@ -1,0 +1,5 @@
+<div [ngClass]="{selected: selected}" class="item">
+  {{item.name}} ({{item.weight}})
+  <div (click)="selectedItem.emit()">save {{item.available}}</div>
+</div>
+

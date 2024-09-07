@@ -1,0 +1,5 @@
+<h2>Claim items</h2>
+@for (item of items; track item.id) {
+  <step-claim-item [item]="item" [selected]="selectedIds.includes(item.id)" (selectedItem)="select(item.id)"></step-claim-item>
+}
+<button (click)="claimItems()">Claim Items</button>
