@@ -3,4 +3,17 @@
     max-width: 300px;
   }
 
+  button {
+    position: sticky;
+    bottom: 3ch;
+    left: 3ch;
+    background: #B88E2F;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    border: none;
+    padding: 2ch 5ch;
+    margin-top: 5ch;
+  };
+
 }
