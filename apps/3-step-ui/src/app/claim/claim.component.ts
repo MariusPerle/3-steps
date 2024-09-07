@@ -28,6 +28,6 @@ export class ClaimComponent {
     }
 
     claimItems() {
-        this.claimService.claimItems(this.selectedIds);
+        this.claimService.claimItems(this.selectedIds).subscribe();
     }
 }

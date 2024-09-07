@@ -8,7 +8,7 @@ export class OrgService {
     constructor(private readonly http: HttpClient) {}
 
     loadDiscountedFood(): Observable<Food[]> {
-        this.http.get<Food>('api/Now');
+        return this.http.get<Food[]>('api/Now');
         return of([
             {
                 id: '1',

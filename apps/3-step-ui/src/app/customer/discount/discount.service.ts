@@ -8,7 +8,7 @@ export class DiscountService {
     constructor(private readonly http: HttpClient) {}
 
     loadDiscountedFood(): Observable<FoodExpiresSoon[]> {
-        this.http.get<FoodExpiresSoon[]>('api/Soon');
+        return this.http.get<FoodExpiresSoon[]>('api/Soon');
 
         return of([
             {

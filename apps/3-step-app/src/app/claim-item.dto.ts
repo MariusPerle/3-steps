@@ -1,12 +1,12 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsString } from 'class-validator';
+import { IsArray, IsString } from 'class-validator';
 
 export class ClaimItemDto {
-  @ApiProperty({example: 'tafel'})
-  @IsString()
-  userId: string;
+    @ApiProperty({ example: 'tafel' })
+    @IsString()
+    userId: string;
 
-  @ApiProperty({example: '1'})
-  @IsString()
-  itemId: string;
+    @ApiProperty()
+    @IsString({ each: true })
+    itemIds: string[];
 }
