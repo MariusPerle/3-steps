@@ -26,6 +26,11 @@ export class ExpiredController {
     getExpiredData() {
         return this.appService.getExpiredList();
     }
+
+    @Post('claim')
+    claimItem(@Body() dto: ClaimItemDto, itemToClaim: FoodToClaim) {
+        this.appService.claimItem(dto, itemToClaim);
+    }
 }
 
 @Controller('Waste')
@@ -39,7 +44,7 @@ export class WasteController {
     }
 
     @Post('claim')
-    claimItem(@Body() dto: ClaimItemDto) {
-        this.appService.claimItem(dto);
+    claimItem(@Body() dto: ClaimItemDto, itemToClaim: FoodToClaim) {
+        this.appService.claimItem(dto, itemToClaim);
     }
 }
