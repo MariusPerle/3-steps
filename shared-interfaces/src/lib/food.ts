@@ -24,3 +24,12 @@ export class FoodExpiresSoon extends Food {
         this.discountInPercent = discountInPercent;
     }
 }
+
+export class FoodToClaim extends Food {
+
+    claimed : boolean = false;
+
+    constructor(id: string, name: string, expiresAt: string, price: number, weight: string, available: number) {
+        super(id, name, expiresAt, price, weight, available);
+    }
+}
