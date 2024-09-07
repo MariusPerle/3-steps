@@ -29,7 +29,8 @@ export class FoodToClaim extends Food {
 
     claimed : boolean = false;
 
-    constructor(id: string, name: string, expiresAt: string, price: number, weight: string, available: number) {
+    constructor(id: string, name: string, expiresAt: string, price: number, weight: string, available: number, claimed: boolean) {
         super(id, name, expiresAt, price, weight, available);
+        this.claimed = claimed;
     }
 }
