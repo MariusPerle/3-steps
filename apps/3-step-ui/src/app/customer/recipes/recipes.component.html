@@ -1,0 +1,13 @@
+<img src="recipe/big-example.png">
+<img src="recipe/Group 173.png">
+
+<h2 class="text-center">Suggested recipe</h2>
+
+<div class="row justify-content-center">
+  @for (recipe of recipes | async; track recipe) {
+    <div class="col-4 recepie">
+      <step-recipe [recipe]="recipe"></step-recipe>
+    </div>
+  }
+</div>
+

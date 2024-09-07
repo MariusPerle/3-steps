@@ -1,0 +1,21 @@
+:host .recipe{
+  margin: 1ch;
+  img {
+    object-fit: cover;
+    width: 400px;
+    height: 470px;
+  }
+  .info {
+    padding: 1ch;
+    width: 400px;
+    height: 8rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    background: #F4F5F7;
+
+    .title {
+      font-size: 1.2rem;
+      font-weight: 500;
+    }
+  }
+}

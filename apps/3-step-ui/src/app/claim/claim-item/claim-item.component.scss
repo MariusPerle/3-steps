@@ -1,4 +1,4 @@
-@use "../../item";
+@use "../../shared/item";
 
 :host {
   @include item.item-render

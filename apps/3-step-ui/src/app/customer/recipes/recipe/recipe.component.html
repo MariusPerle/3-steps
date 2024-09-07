@@ -1,0 +1,14 @@
+<div class="recipe">
+  <img [src]="recipe.img">
+  <div class="info">
+    <div class="title">{{ recipe.title }}</div>
+    <div>
+      Based on
+      <ul>
+        @for (ingredient of recipe.ingredients; track ingredient.id) {
+          <li>{{ingredient.name}} (expires {{ingredient.expiresAt | date}})</li>
+        }
+      </ul>
+    </div>
+  </div>
+</div>
