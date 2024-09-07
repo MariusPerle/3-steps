@@ -1,4 +1,4 @@
-import './article_condition_filter_types';
+import { Filter, pipe } from "./article_condition_filter_types";
 
 // calculates the difference between two dates and returns it in days
 // first date should be earlier than second date
