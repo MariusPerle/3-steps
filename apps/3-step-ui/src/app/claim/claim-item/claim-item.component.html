@@ -1,2 +1,5 @@
-<p>claim-item works!</p>
-{{ item | json }}
+<div [ngClass]="{selected: selected}">
+  {{ item | json }}
+  <div (click)="selectedItem.emit()">select</div>
+</div>
+

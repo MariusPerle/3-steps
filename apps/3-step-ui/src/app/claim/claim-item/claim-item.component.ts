@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Food } from '@3-steps/interfaces';
 
@@ -11,4 +11,6 @@ import { Food } from '@3-steps/interfaces';
 })
 export class ClaimItemComponent {
     @Input({ required: true }) item!: Food;
+    @Input() selected = false;
+    @Output() selectedItem = new EventEmitter<void>();
 }
