@@ -11,8 +11,10 @@ export class AppService implements OnModuleInit{
 
   private data: object[];
 
+  private today: Date = new Date(2024,8,16);
+
   private foodList: Food[];
-  private soonExpireList: FoodExpiresSoon[] = [];
+  //private soonExpireList: FoodExpiresSoon[] = [];
   private expiredList: FoodToClaim[];
   private wasteList: FoodToClaim[];
 
@@ -39,31 +41,6 @@ export class AppService implements OnModuleInit{
       fs.readFileSync('articles.json', 'utf-8')
     );
 
-    this.convertJsonArrayToFoodList(this.data);
-
-    let today = new Date(2024,8,16);
-
-    this.soonExpireList = this.foodList
-      .filter((food) => evaluateRule(food, today) === 'soon')
-      .map((food) => ({
-        ...food,
-        discountInPercent: 50 // or any logic to determine the discount
-      } as FoodExpiresSoon));
-
-    this.expiredList = this.foodList
-    .filter((food) => evaluateRule(food, today) === 'expired')
-    .map((food) => ({
-        ...food,
-        claimed: false
-    } as FoodToClaim));
-
-    this.wasteList = this.foodList
-    .filter((food) => evaluateRule(food, today) === 'waste')
-    .map((food) => ({
-        ...food,
-        claimed: false
-    } as FoodToClaim));
-
   }
     onModuleInit() {
         for (const obj of this.data) {
@@ -79,26 +56,122 @@ export class AppService implements OnModuleInit{
         }
 
         console.log('Data written to database');
-        this.dbConnection.getConnection().all(
-            'SELECT * FROM food ',
-            (_, res) => console.log(res)
-            );
+
+        // set discount for all soon-to-expire products
+        const query = "SELECT * FROM food";
+        // Use db.all to retrieve all results
+        this.dbConnection.getConnection().all(query, [], (err, rows) => {
+            if (err) {
+                console.error("Error fetching data:", err.message);
+                return;
+            }
+
+            // Iterate over the retrieved rows
+            rows.forEach((row: any) => {
+                // convert row to Food obj
+                let food = new Food(row.id, row.name, row.expiresAt, row.price, row.weight, row.available)
+                // check expiry status of food
+                if(evaluateRule(food, this.today) == "soon"){
+                    console.log("Updating entry")
+                    let query = "UPDATE food SET discountInPercent=50 WHERE id = ?";
+                    // update discount value if status matched condition
+                    this.dbConnection.getConnection().run(query, food.id);
+                }
+            });
+        });
+
     }
 
     getData(): object {
         return this.data;
     }
 
-    getSoonExpireList(): Food[] {
-        return this.soonExpireList;
+    getSoonExpireList(): Promise<FoodExpiresSoon[]> {
+        return new Promise<FoodExpiresSoon[]>((resolve, reject) => {
+            const soonExpireList : FoodExpiresSoon[] = [];
+
+            // set discount for all soon-to-expire products
+            const query = "SELECT * FROM food WHERE discountInPercent = 50";
+            // Use db.all to retrieve all results
+            this.dbConnection.getConnection().all(query, [], (err, rows) => {
+                if (err) {
+                    console.error("Error fetching data:", err.message);
+                    return;
+                }
+
+                // Iterate over the retrieved rows
+                rows.forEach((row: any) => {
+                    // convert row to Food obj
+                    let food = new FoodExpiresSoon(row.id, row.name, row.expiresAt, row.price, row.weight, row.available, row.discountInPercent)
+                    
+                    //add to list
+                    soonExpireList.push(food);
+                    console.log("Pushed to expire list");
+                });
+                resolve(soonExpireList)
+            });
+        });
     }
 
-    getExpiredList(): Food[] {
-        return this.expiredList;
+    getExpiredList(): Promise<FoodToClaim[]> {
+
+        return new Promise<FoodToClaim[]>((resolve, reject) => {
+            const expiredList : FoodToClaim[] = [];
+
+            // set discount for all soon-to-expire products
+            const query = "SELECT * FROM food";
+            // Use db.all to retrieve all results
+            this.dbConnection.getConnection().all(query, [], (err, rows) => {
+                if (err) {
+                    console.error("Error fetching data:", err.message);
+                    return;
+                }
+
+                // Iterate over the retrieved rows
+                rows.forEach((row: any) => {
+                    // convert row to Food obj
+                    let food = new FoodToClaim(row.id, row.name, row.expiresAt, row.price, row.weight, row.available, true)
+
+                    if(evaluateRule(food, this.today) == "expired"){ 
+                        //add to list
+                        expiredList.push(food);
+                        console.log("Pushed to expired list");
+                    }
+
+                });
+                resolve(expiredList)
+            });
+        });
     }
 
-    getWasteList(): Food[] {
-        return this.wasteList;
+    getWasteList(): Promise<FoodToClaim[]> {
+        return new Promise<FoodToClaim[]>((resolve, reject) => {
+            const wasteList : FoodToClaim[] = [];
+
+            // set discount for all soon-to-expire products
+            const query = "SELECT * FROM food";
+            // Use db.all to retrieve all results
+            this.dbConnection.getConnection().all(query, [], (err, rows) => {
+                if (err) {
+                    console.error("Error fetching data:", err.message);
+                    return;
+                }
+
+                // Iterate over the retrieved rows
+                rows.forEach((row: any) => {
+                    // convert row to Food obj
+                    let food = new FoodToClaim(row.id, row.name, row.expiresAt, row.price, row.weight, row.available, true)
+
+                    if(evaluateRule(food, this.today) == "waste"){ 
+                        //add to list
+                        wasteList.push(food);
+                        console.log("Pushed to waste list");
+                    }
+                    
+                });
+                resolve(wasteList)
+            });
+        });
     }
 
     claimItem(dto: ClaimItemDto, itemToClaim: FoodToClaim) {
