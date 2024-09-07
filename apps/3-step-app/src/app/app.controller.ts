@@ -12,9 +12,9 @@ export class SoonExpireController {
 
     @Get()
     @ApiResponse({ type: FoodExpiresSoon })
-    getSoonExpireData() {
+    async getSoonExpireData() {
         // Return JSON here
-        return this.appService.getSoonExpireList();
+        return await this.appService.getSoonExpireList();
     }
 }
 
@@ -24,8 +24,8 @@ export class ExpiredController {
 
     @Get()
     @ApiResponse({ type: FoodToClaim })
-    getExpiredData() {
-        return this.appService.getExpiredList();
+    async getExpiredData() {
+        return await this.appService.getExpiredList();
     }
 
     @Post('claim')
@@ -40,8 +40,8 @@ export class WasteController {
 
     @Get()
     @ApiResponse({ type: FoodToClaim })
-    getWasteData() {
-        return this.appService.getWasteList();
+    async getWasteData() {
+        return await this.appService.getWasteList();
     }
 
     @Post('claim')
@@ -57,7 +57,7 @@ export class ReceipeController {
   @Get()
   async getReceipes() {
     return await this.bundleService.getBundles(
-      this.appService.getSoonExpireList()
+      await this.appService.getSoonExpireList()
     );
   }
 
