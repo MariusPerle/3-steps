@@ -4,6 +4,7 @@ interface Article {
   name: string;
 }
 
+// Status of experitation
 type Status = string;
 
 interface Filter {
