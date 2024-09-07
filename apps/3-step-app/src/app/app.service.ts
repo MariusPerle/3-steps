@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import * as fs from 'fs';
 import { ClaimItemDto } from './claim-item.dto';
-import { Food, FoodExpiresSoon } from '@3-steps/interfaces';
+import { Food, FoodExpiresSoon, FoodToClaim } from '@3-steps/interfaces';
 import { evaluateRule } from './article_condition_filter';
 
 @Injectable()
@@ -49,13 +49,19 @@ export class AppService {
         discountInPercent: 50 // or any logic to determine the discount
       } as FoodExpiresSoon));
 
-    this.expiredList = this.foodList.filter(
-      (food) => evaluateRule(food, today) === 'expired'
-    );
+    this.expiredList = this.foodList
+    .filter((food) => evaluateRule(food, today) === 'expired')
+    .map((food) => ({
+        ...food,
+        claimed: false
+    } as FoodToClaim));
 
-    this.wasteList = this.foodList.filter(
-      (food) => evaluateRule(food, today) === 'waste'
-    );
+    this.wasteList = this.foodList
+    .filter((food) => evaluateRule(food, today) === 'waste')
+    .map((food) => ({
+        ...food,
+        claimed: false
+    } as FoodToClaim));
   }
 
     getData(): object {
@@ -74,7 +80,10 @@ export class AppService {
         return this.wasteList;
     }
 
-  claimItem(dto: ClaimItemDto) {
-    console.log(dto);
-  }
+    claimItem(dto: ClaimItemDto) {
+        console.log(dto);
+
+
+
+    }
 }
