@@ -10,10 +10,10 @@ export class SoonExpireController {
     constructor(private readonly appService: AppService) {}
 
     @Get()
-    @ApiResponse({ type: FoodExpiresSoon })
+    @ApiResponse({ type: Food })
     getSoonExpireData() {
         // Return JSON here
-        return this.appService.getData();
+        return this.appService.getSoonExpireList();
     }
 }
 
@@ -24,7 +24,7 @@ export class ExpiredController {
     @Get()
     @ApiResponse({ type: Food })
     getExpiredData() {
-        return this.appService.getData();
+        return this.appService.getExpiredList();
     }
 }
 
@@ -35,7 +35,7 @@ export class WasteController {
     @Get()
     @ApiResponse({ type: Food })
     getWasteData() {
-        return this.appService.getData();
+        return this.appService.getWasteList();
     }
 
     @Post('claim')
