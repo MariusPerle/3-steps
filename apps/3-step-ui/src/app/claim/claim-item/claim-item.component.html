@@ -2,7 +2,7 @@
   <img class="item-image" [src]="'items/'+item.id+'.png'">
   <div class="description">
     <div class="name">{{item.name}}</div>
-    <div class="weight">{{item.weight}}</div>
+    <div class="weight">{{item.weight}} x {{item.available}}</div>
   </div>
   <div class="hover">
     <div>
@@ -12,7 +12,7 @@
     </div>
   </div>
   <div class="limit-time">
-    only available {{now | date: 'dd.MM'}} - {{item.expiresAt | date:'dd.MM'}}
+    only available till {{item.expiresAt | date:'dd.MM'}}
   </div>
   <!---Todo insert here info that item got claimed--->
 </div>
