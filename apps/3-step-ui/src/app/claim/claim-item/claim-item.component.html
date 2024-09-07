@@ -1,5 +1,22 @@
-<div [ngClass]="{selected: selected}" class="item">
-  {{item.name}} ({{item.weight}})
-  <div (click)="selectedItem.emit()">save {{item.available}}</div>
+<div class="item">
+  <img class="item-image" src="items/example.png">
+  <div class="description">
+    <div class="name">{{item.name}}</div>
+    <div class="weight">{{item.weight}}</div>
+  </div>
+  <div class="hover">
+    <div>
+      <div class="actions">
+        <button>Add to list</button>
+      </div>
+      <div class="actions">
+        <img src="items/interact.png">
+      </div>
+
+    </div>
+  </div>
+  <div class="limit-time">
+    only available {{now | date: 'dd.MM'}} - {{item.expiresAt | date:'dd.MM'}}
+  </div>
 </div>
 

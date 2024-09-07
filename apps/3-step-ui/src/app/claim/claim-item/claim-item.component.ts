@@ -13,4 +13,6 @@ export class ClaimItemComponent {
     @Input({ required: true }) item!: Food;
     @Input() selected = false;
     @Output() selectedItem = new EventEmitter<void>();
+
+    now = new Date();
 }
