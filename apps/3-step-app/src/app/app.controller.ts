@@ -4,6 +4,7 @@ import { AppService } from './app.service';
 import { ClaimItemDto } from './claim-item.dto';
 import { ApiResponse } from '@nestjs/swagger';
 import { FoodExpiresSoon, FoodToClaim } from '@3-steps/interfaces';
+import { BundleService } from './bundle.service';
 
 @Controller('Soon')
 export class SoonExpireController {
@@ -47,4 +48,17 @@ export class WasteController {
     claimItem(@Body() dto: ClaimItemDto, itemToClaim: FoodToClaim) {
         this.appService.claimItem(dto, itemToClaim);
     }
+}
+
+@Controller('receips')
+export class ReceipeController {
+  constructor(private readonly appService: AppService, private readonly bundleService: BundleService) {}
+
+  @Get()
+  async getReceipes() {
+    return await this.bundleService.getBundles(
+      this.appService.getSoonExpireList()
+    );
+  }
+
 }
