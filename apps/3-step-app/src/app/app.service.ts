@@ -19,24 +19,11 @@ export class AppService implements OnModuleInit{
   private wasteList: FoodToClaim[];
 
   private dbConnection : foodDatabase = new foodDatabase();
-  
-  convertJsonObjToFood(json: any): Food {
-    return new Food(
-      json.id,
-      json.name,
-      json.expiresAt,
-      json.price,
-      json.weight,
-      json.available
-    );
-  }
 
-  // Converts an array of JSON objects into an array of Food instances
-  convertJsonArrayToFoodList(jsonArray: object[]) {
-    this.foodList = jsonArray.map((json) => this.convertJsonObjToFood(json));
-  }
 
   constructor() {
+
+    // this can be replaced with an API request to Schwarz-IT cloud
     this.data = JSON.parse(
       fs.readFileSync('articles.json', 'utf-8')
     );
