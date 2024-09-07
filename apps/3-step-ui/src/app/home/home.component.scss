@@ -1,0 +1,14 @@
+:host {
+  .basic-info {
+    position: relative;
+    width: 100vw;
+    margin-top: -110px;
+    z-index: -1;
+
+    .text {
+      position: absolute;
+      bottom: 125px;
+      right: 0;
+    }
+  }
+}

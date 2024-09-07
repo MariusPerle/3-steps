@@ -1,8 +1,11 @@
 :host {
-  .home {
-    position: absolute;
-    top: 0;
-    right: 0;
-    font-size: 40px;
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .logo {
+      width: 60px;
+    }
   }
 }
