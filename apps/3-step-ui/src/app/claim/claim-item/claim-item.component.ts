@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Food } from '@3-steps/interfaces';
 
 @Component({
     selector: 'step-claim-item',
@@ -8,4 +9,6 @@ import { CommonModule } from '@angular/common';
     templateUrl: './claim-item.component.html',
     styleUrl: './claim-item.component.scss',
 })
-export class ClaimItemComponent {}
+export class ClaimItemComponent {
+    @Input({ required: true }) item!: Food;
+}

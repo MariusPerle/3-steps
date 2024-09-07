@@ -1,1 +1,5 @@
 <p>claim works!</p>
+@for (item of items; track item.id) {
+  <step-claim-item [item]="item"></step-claim-item>
+}
+

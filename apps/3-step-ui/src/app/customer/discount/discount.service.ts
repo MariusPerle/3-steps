@@ -10,6 +10,25 @@ export class DiscountService {
     loadDiscountedFood(): Observable<FoodExpiresSoon[]> {
         this.http.get<FoodExpiresSoon[]>('api/Soon');
 
-        return of([]);
+        return of([
+            {
+                id: '1',
+                name: 'Bread',
+                expiresAt: new Date('2024-09-09'),
+                price: 2.19,
+                weight: '500g',
+                available: 200,
+                discountInPercent: 30,
+            },
+            {
+                id: '2',
+                name: 'Bear',
+                expiresAt: new Date('2024-09-09'),
+                price: 2.99,
+                weight: '500g',
+                available: 200,
+                discountInPercent: 10,
+            },
+        ]);
     }
 }

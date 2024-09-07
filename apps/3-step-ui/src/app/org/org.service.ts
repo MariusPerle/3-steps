@@ -9,6 +9,23 @@ export class OrgService {
 
     loadDiscountedFood(): Observable<Food[]> {
         this.http.get<Food>('api/Now');
-        return of([]);
+        return of([
+            {
+                id: '1',
+                name: 'Bread',
+                expiresAt: new Date('2024-09-09'),
+                price: 2.19,
+                weight: '500g',
+                available: 200,
+            },
+            {
+                id: '2',
+                name: 'Bear',
+                expiresAt: new Date('2024-09-09'),
+                price: 2.99,
+                weight: '500g',
+                available: 200,
+            },
+        ]);
     }
 }

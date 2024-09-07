@@ -1,2 +1,5 @@
 <p>discount works!</p>
-<step-discount-item></step-discount-item>
+@for (item of items | async; track item.id) {
+  <step-discount-item [item]="item"></step-discount-item>
+}
+
