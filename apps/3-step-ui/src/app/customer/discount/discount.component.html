@@ -1,5 +1,10 @@
 <h2>Our Products</h2>
-@for (item of items | async; track item.id) {
-  <step-discount-item [item]="item"></step-discount-item>
-}
+<div class="row justify-content-center">
+  @for (item of items | async; track item.id) {
+    <div class="col-3 item">
+      <step-discount-item [item]="item"></step-discount-item>
+    </div>
+  }
+</div>
+
 

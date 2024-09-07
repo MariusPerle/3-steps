@@ -22,7 +22,9 @@
                         "input": "apps/3-step-ui/public"
                     }
                 ],
-                "styles": ["apps/3-step-ui/src/styles.scss"],
+                "styles": [
+                  "node_modules/bootstrap/scss/bootstrap.scss",
+                  "apps/3-step-ui/src/styles.scss"],
                 "scripts": []
             },
             "configurations": {
